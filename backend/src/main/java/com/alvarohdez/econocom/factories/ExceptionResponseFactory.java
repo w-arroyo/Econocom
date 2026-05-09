@@ -15,6 +15,14 @@ public final class ExceptionResponseFactory {
         );
     }
 
+    public ExceptionResponse createForbiddenResponse(String path){
+        return generateExceptionResponse(
+                "Fraudulent request.",
+                HttpStatus.FORBIDDEN.value(),
+                path
+        );
+    }
+
     public ExceptionResponse createEmptyFieldsResponse(String path){
         return generateExceptionResponse(
                 "Empty required fields are not allowed.",

@@ -28,7 +28,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
         String extractedToken= jwtTokenHandler.getTokenFromRequest(request);
         if(extractedToken!=null && jwtTokenHandler.checkIfJwtTokenIsStillValid(extractedToken)){
             String userEmail= jwtTokenHandler.getUserEmailFromJwtToken(extractedToken);
@@ -40,6 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             );
             usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); // add details like IP address
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken); // adds the authenticated user to the context allowing him to access secured endpoints
+            // this last one basically allows the request until completed beacuse it is authenticated
         }
         filterChain.doFilter(request,response);
     }

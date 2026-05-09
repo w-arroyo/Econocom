@@ -9,12 +9,12 @@ import java.util.Date;
 @Component
 public final class JWTTokenFactory {
 
-    public String generateJwtToken(String userId){
+    public String generateJwtToken(String userEmail){
         return Jwts.builder()
                 .signWith(AppConfig.getJwtTokenSigningKey())
                 .setExpiration(generateTokenExpirationDate())
                 .setIssuedAt(new Date())
-                .setSubject(userId)
+                .setSubject(userEmail)
                 .compact();
     }
 

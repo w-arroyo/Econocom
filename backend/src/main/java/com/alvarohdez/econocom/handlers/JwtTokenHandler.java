@@ -19,6 +19,10 @@ public class JwtTokenHandler {
         this.jwtTokenFactory = jwtTokenFactory;
     }
 
+    public String generateJwtToken(String userEmail){
+        return jwtTokenFactory.generateJwtToken(userEmail);
+    }
+
     private Claims extractClaims(String jwtToken){
         return generateJwtParser()
                 .parseClaimsJws(jwtToken)
