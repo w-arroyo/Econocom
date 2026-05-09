@@ -47,4 +47,12 @@ public final class ExceptionResponseFactory {
         );
     }
 
+    public ExceptionResponse createUserDoesNotExistExceptionResponse(String path){
+        return generateExceptionResponse(
+                "There is no user registered with the provided email.",
+                HttpStatus.BAD_REQUEST.value(),
+                path
+        );
+    }
+
 }

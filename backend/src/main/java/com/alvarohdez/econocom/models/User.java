@@ -4,7 +4,7 @@ import com.alvarohdez.econocom.enums.UserType;
 
 public class User {
 
-    private String userId;
+    private String id;
     private String email;
     private String encodedPassword;
     private UserType userType;
@@ -14,7 +14,7 @@ public class User {
     }
 
     public User(String id, String email, String password, UserType userType){
-        this.userId=id;
+        this.id =id;
         this.email = email;
         this.encodedPassword=password;
         this.userType=userType;
@@ -44,8 +44,8 @@ public class User {
         this.userType=userType;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
 }
