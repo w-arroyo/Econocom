@@ -21,7 +21,7 @@ public final class DatabaseInitializer {
     @PostConstruct
     public void init(){
         userRepository.save(
-                userFactory.createUserClient(AppConfig.getFillerUsername(),AppConfig.getFillerUserPassword()));
+                userFactory.createUserClient(AppConfig.getFillerUserEmail(),AppConfig.getFillerUserPassword()));
     }
 
 }

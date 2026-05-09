@@ -5,6 +5,7 @@ import com.alvarohdez.econocom.exceptions.EmptyFieldsException;
 import com.alvarohdez.econocom.exceptions.InvalidCredentials;
 import com.alvarohdez.econocom.factories.ExceptionResponseFactory;
 import com.alvarohdez.econocom.utils.generators.RequestResponseGenerator;
+import io.jsonwebtoken.JwtException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -33,11 +34,23 @@ public class ExceptionHandler {
         );
     }
 
+    @org.springframework.web.bind.annotation.ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ExceptionResponse> illegalArgumentExceptionHandler(IllegalArgumentException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createUnauthorizedResponse(request.getRequestURI()));
+    }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCredentials.class)
     public ResponseEntity<ExceptionResponse> invalidExceptionHandler(InvalidCredentials exception, HttpServletRequest request){
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createInvalidCredentialsExceptionResponse(request.getRequestURI())
         );
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(JwtException.class)
+    public ResponseEntity<ExceptionResponse> invalidJwtTokenExceptionHandler(JwtException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createUnauthorizedResponse(request.getRequestURI()));
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
