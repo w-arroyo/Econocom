@@ -2,10 +2,14 @@ package com.alvarohdez.econocom.app_config;
 
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 
+@Component
+@ConfigurationProperties(prefix="app") // only way to make spring initialize this class befaure injection
 public class AppConfig {
 
     private static String fillerUserEmail;

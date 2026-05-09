@@ -1,12 +1,12 @@
 package com.alvarohdez.econocom.controller_advice;
 
 import com.alvarohdez.econocom.dto.ExceptionResponse;
-import com.alvarohdez.econocom.exceptions.EmptyFieldsException;
-import com.alvarohdez.econocom.exceptions.InvalidCredentials;
+import com.alvarohdez.econocom.exceptions.*;
 import com.alvarohdez.econocom.factories.ExceptionResponseFactory;
 import com.alvarohdez.econocom.utils.generators.RequestResponseGenerator;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,9 +41,36 @@ public class ExceptionHandler {
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCredentials.class)
-    public ResponseEntity<ExceptionResponse> invalidExceptionHandler(InvalidCredentials exception, HttpServletRequest request){
+    public ResponseEntity<ExceptionResponse> invalidCredentialsExceptionHandler(InvalidCredentials exception, HttpServletRequest request){
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createInvalidCredentialsExceptionResponse(request.getRequestURI())
+        );
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ExceptionResponse> authenticationExceptionHandler(AuthenticationException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createInvalidCredentialsExceptionResponse(request.getRequestURI())
+        );
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(UnauthorizedRequestException.class)
+    public ResponseEntity<ExceptionResponse> unauthorizedExceptionHandler(UnauthorizedRequestException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createUnauthorizedResponse(request.getRequestURI()));
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(UserDoesNotExistException.class)
+    public ResponseEntity<ExceptionResponse> userDoesNotExistExceptionHandler(UserDoesNotExistException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createUserDoesNotExistExceptionResponse(request.getRequestURI())
+        );
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(FraudulentRequestException.class)
+    public ResponseEntity<ExceptionResponse> fraudulentExceptionHandler(FraudulentRequestException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createForbiddenResponse(request.getRequestURI())
         );
     }
 

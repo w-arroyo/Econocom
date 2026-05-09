@@ -15,6 +15,14 @@ public final class ExceptionResponseFactory {
         );
     }
 
+    public ExceptionResponse createForbiddenResponse(String path){
+        return generateExceptionResponse(
+                "Fraudulent request.",
+                HttpStatus.FORBIDDEN.value(),
+                path
+        );
+    }
+
     public ExceptionResponse createEmptyFieldsResponse(String path){
         return generateExceptionResponse(
                 "Empty required fields are not allowed.",
@@ -43,6 +51,14 @@ public final class ExceptionResponseFactory {
         return generateExceptionResponse(
                 "There was an unexpected error handling your request.",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                path
+        );
+    }
+
+    public ExceptionResponse createUserDoesNotExistExceptionResponse(String path){
+        return generateExceptionResponse(
+                "There is no user registered with the provided email.",
+                HttpStatus.BAD_REQUEST.value(),
                 path
         );
     }
