@@ -3,7 +3,6 @@ package com.alvarohdez.econocom.initializer;
 import com.alvarohdez.econocom.app_config.AppConfig;
 import com.alvarohdez.econocom.factories.UserFactory;
 import com.alvarohdez.econocom.repositories.FillerUserRepository;
-import com.alvarohdez.econocom.repositories.UserRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
