@@ -17,13 +17,14 @@ public class FillerUserRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByUserName(String username) {
-        return Optional.ofNullable(database.get(username));
+    public Optional<User> findUserByEmail(String email) {
+        return Optional.ofNullable(database.get(email));
     }
 
     @Override
-    public void save(User user) {
-        database.put(user.getUserName(),user);
+    public User save(User user) {
+        database.put(user.getEmail(),user);
+        return database.get(user.getEmail());
     }
 
 

@@ -5,7 +5,7 @@ import com.alvarohdez.econocom.enums.UserType;
 public class User {
 
     private String userId;
-    private String userName;
+    private String email;
     private String encodedPassword;
     private UserType userType;
 
@@ -13,19 +13,19 @@ public class User {
 
     }
 
-    public User(String id, String userName, String password, UserType userType){
+    public User(String id, String email, String password, UserType userType){
         this.userId=id;
-        this.userName=userName;
+        this.email = email;
         this.encodedPassword=password;
         this.userType=userType;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getEncodedPassword() {
