@@ -25,13 +25,13 @@ public class JwtTokenHandler {
 
     private Claims extractClaims(String jwtToken){
         return generateJwtParser()
-                .parseClaimsJws(jwtToken)
-                .getBody();
+                .parseSignedClaims(jwtToken)
+                .getPayload();
     }
 
     private JwtParser generateJwtParser(){
-        return Jwts.parserBuilder()
-                .setSigningKey(AppConfig.getJwtTokenSigningKey())
+        return Jwts.parser()
+                .verifyWith(AppConfig.getJwtTokenSigningKey())
                 .build();
     }
 

@@ -1,6 +1,5 @@
 package com.alvarohdez.econocom.services;
 
-import com.alvarohdez.econocom.dto.LoginRequestDTO;
 import com.alvarohdez.econocom.exceptions.FraudulentRequestException;
 import com.alvarohdez.econocom.exceptions.UnauthorizedRequestException;
 import com.alvarohdez.econocom.handlers.JwtTokenHandler;
@@ -23,10 +22,10 @@ public class UserAuthenticationService {
         this.authenticationManager = authenticationManager;
     }
 
-    public String login(LoginRequestDTO loginRequestDTO){
-        Authentication authentication=authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequestDTO.getEmail(),loginRequestDTO.getPassword()));
-        return jwtTokenHandler.generateJwtToken(loginRequestDTO.getEmail());
+    public String login(String email, String password){
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(email,password));
+        return jwtTokenHandler.generateJwtToken(email);
     }
 
     public String getAuthenticatedUserId() {

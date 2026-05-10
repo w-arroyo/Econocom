@@ -63,4 +63,12 @@ public final class ExceptionResponseFactory {
         );
     }
 
+    public ExceptionResponse createEmailAlreadyInUseExceptionResponse(String path){
+        return generateExceptionResponse(
+                "Email is already in use.",
+                HttpStatus.BAD_REQUEST.value(),
+                path
+        );
+    }
+
 }
