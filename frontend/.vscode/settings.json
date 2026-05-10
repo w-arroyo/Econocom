@@ -1,0 +1,5 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
