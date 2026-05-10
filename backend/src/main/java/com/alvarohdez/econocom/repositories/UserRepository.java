@@ -10,4 +10,6 @@ public interface UserRepository {
 
     User save(User user);
 
+    boolean isEmailAvailable(String email);
+
 }

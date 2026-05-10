@@ -3,10 +3,14 @@ package com.alvarohdez.econocom.security;
 import com.alvarohdez.econocom.filters.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -31,8 +35,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // disables CSRF (useful for developing)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // enables CORS
                 .authorizeHttpRequests(auth -> {
-                    auth.antMatchers("/api/login/register").permitAll(); // allows access without authentication
-                    auth.antMatchers("/api/login/authenticate").permitAll();
+                    auth.antMatchers("/api/users/register").permitAll(); // allows access without authentication
+                    auth.antMatchers("/api/users/login").permitAll();
                     //auth.antMatchers().permitAll(); this would allow any request without being authenticated
                     auth.anyRequest().authenticated(); // requires being logged in to access any request
                 })
@@ -52,6 +56,16 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // applies to all it's routes
         return source;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
 }

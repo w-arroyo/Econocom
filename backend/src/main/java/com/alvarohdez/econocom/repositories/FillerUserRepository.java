@@ -1,5 +1,6 @@
 package com.alvarohdez.econocom.repositories;
 
+import com.alvarohdez.econocom.exceptions.EmailAlreadyInUseException;
 import com.alvarohdez.econocom.models.User;
 import org.springframework.stereotype.Repository;
 
@@ -23,8 +24,16 @@ public class FillerUserRepository implements UserRepository {
 
     @Override
     public User save(User user) {
-        database.put(user.getEmail(),user);
-        return database.get(user.getEmail());
+        User existingUser= database.putIfAbsent(user.getEmail(),user);
+        if(existingUser==null){
+            return user;
+        }
+        throw new EmailAlreadyInUseException("Email is already in use.");
+    }
+
+    @Override
+    public boolean isEmailAvailable(String email) {
+        return !database.containsKey(email);
     }
 
 

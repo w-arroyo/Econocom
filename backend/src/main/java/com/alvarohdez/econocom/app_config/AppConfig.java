@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 
 @Component
 @ConfigurationProperties(prefix="app") // only way to make spring initialize this class befaure injection
@@ -17,12 +17,12 @@ public class AppConfig {
     private static int jwtTokenLength;
     private static String jwtTokenSigningKey;
 
-    @Value("{app.filler_user_email}")
+    @Value("${app.filler_user_email}")
     private void setFillerUsername(String value){
         fillerUserEmail =value;
     }
 
-    @Value("{app.filler_user_password}")
+    @Value("${app.filler_user_password}")
     private void setFillerUserPassword(String value){
         fillerUserPassword=value;
     }
@@ -45,7 +45,7 @@ public class AppConfig {
         return fillerUserPassword;
     }
 
-    public static Key getJwtTokenSigningKey(){
+    public static SecretKey getJwtTokenSigningKey(){
         return Keys.hmacShaKeyFor(jwtTokenSigningKey.getBytes(StandardCharsets.UTF_8));
     }
 
