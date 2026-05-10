@@ -1,103 +1,235 @@
-.login-wrapper {
+.login-page {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: #f4f4f4;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+}
+
+.login-illustration {
+  flex: 1.9;
+  background: #efefef;
+  display: flex;
   align-items: center;
-  min-height: calc(100vh - 64px);
-  background-color: #f5f5f5;
-  padding: 16px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.illustration-content {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 620px;
+    object-fit: contain;
+  }
+}
+
+.login-panel {
+  flex: 1;
+  min-width: 420px;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .login-card {
   width: 100%;
-  max-width: 450px;
-  padding: 24px 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 360px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.logo {
+  width: 190px;
+  object-fit: contain;
 }
 
 .login-title {
-  font-size: 1.4rem;
-  font-weight: 500;
-  margin-bottom: 24px;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.87);
+  font-size: 28px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 28px;
+  text-align: left;
 }
 
 .full-width {
   width: 100%;
-  margin-bottom: 16px;
+}
+
+.custom-field {
+  margin-bottom: 18px;
+
+  ::ng-deep .mdc-notched-outline__leading,
+  ::ng-deep .mdc-notched-outline__notch,
+  ::ng-deep .mdc-notched-outline__trailing {
+    border-color: #bdbdbd !important;
+  }
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .mat-icon {
+    color: #8c8c8c;
+    font-size: 20px;
+  }
 }
 
 .signin-btn {
   height: 48px;
-  font-size: 1rem;
-  font-weight: 500;
   margin-top: 8px;
-  margin-bottom: 8px;
+  border-radius: 4px;
+  background: #ff6a00 !important;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: none !important;
 }
 
 .response-message {
-  background-color: #ffebee;
-  color: #c62828;
-  padding: 12px;
-  border-radius: 4px;
-  margin: 16px 0;
-  font-size: 0.9rem;
+  margin-top: 16px;
   text-align: center;
-  border: 1px solid #ef9a9a;
+  font-size: 14px;
+  color: #f44336;
 }
 
 .separator {
+  margin: 30px 0 18px;
   text-align: center;
-  margin: 24px 0 16px;
-  color: #666;
-  font-size: 0.9rem;
-  position: relative;
-  
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 30%;
-    height: 1px;
-    background-color: #ddd;
-  }
-  
-  &::before {
-    left: 0;
-  }
-  
-  &::after {
-    right: 0;
-  }
-  
+
   span {
-    background: white;
-    padding: 0 12px;
+    font-size: 15px;
+    color: #555;
   }
 }
 
 .decathlon-btn {
-  height: 48px;
-  font-size: 1rem;
+  height: 46px;
+  border-radius: 4px;
+  background: #3746c8 !important;
+  color: #fff !important;
   font-weight: 500;
-  margin-bottom: 16px;
-  border-color: #0071c5;
-  color: #0071c5;
+  letter-spacing: 0.5px;
+  box-shadow: none !important;
 }
 
 .register-link {
+  margin-top: 26px;
   text-align: center;
-  margin-top: 16px;
-  font-size: 0.9rem;
-  
+  font-size: 15px;
+  color: #333;
+
   a {
-    color: #1976d2;
+    color: #ff6a00;
     text-decoration: none;
     font-weight: 500;
-    
-    &:hover {
-      text-decoration: underline;
-    }
+    margin-left: 4px;
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 24px;
+  right: 48px;
+  width: calc(33% - 96px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  font-size: 13px;
+
+  .mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .arrow {
+    font-size: 18px;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.1;
+
+  .econocom {
+    font-size: 20px;
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .subtext {
+    font-size: 11px;
+    color: #777;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login-illustration {
+    display: none;
+  }
+
+  .login-panel {
+    flex: 1;
+    min-width: 100%;
+  }
+
+  .footer {
+    width: calc(100% - 48px);
+    right: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-panel {
+    padding: 24px;
+  }
+
+  .login-card {
+    max-width: 100%;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .footer {
+    position: relative;
+    width: 100%;
+    right: auto;
+    bottom: auto;
+    margin-top: 40px;
   }
 }

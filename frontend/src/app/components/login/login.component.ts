@@ -16,6 +16,7 @@ export class LoginComponent {
   email: string;
   password: string;
   response: String;
+  hidePassword: boolean;
 
   constructor(loginService: LoginService, router: Router){
     this.loginService=loginService;
@@ -24,6 +25,7 @@ export class LoginComponent {
     this.response='';
     this.email='';
     this.password='';
+    this.hidePassword=true;
   }
 
   loginRequest(): void{
@@ -51,6 +53,10 @@ export class LoginComponent {
 
   loginWithDecathlon(){
 
+  }
+
+  changePasswordVisibilty(): void{
+    this.hidePassword = !this.hidePassword;
   }
 
   private checkFields(): boolean{

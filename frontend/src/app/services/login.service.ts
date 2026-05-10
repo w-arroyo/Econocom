@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { SuccessfulLoginRequest } from '../models/basic_request_response.model';
 import { LoginRequest } from '../models/login_request.model';
 import { Observable } from 'rxjs';
-import { BadRequestResponse } from '../models/bad_request_response.model';
 
 @Injectable({
   providedIn: 'root'
