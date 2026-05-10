@@ -33,7 +33,30 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "assets/scss/1-settings/variables",
+                "assets/scss/2-design-tokens/typography",
+                "assets/scss/3-tools/aspect-ratio",
+                "assets/scss/3-tools/breakpoints",
+                "assets/scss/3-tools/ellipsis",
+                "assets/scss/3-tools/flexbox",
+                "assets/scss/3-tools/fluid-type",
+                "assets/scss/3-tools/font-face",
+                "assets/scss/3-tools/notouch-hover",
+                "assets/scss/3-tools/nth-child",
+                "assets/scss/3-tools/transition",
+                "assets/scss/4-generic/normalize",
+                "assets/scss/4-generic/reset",
+                "assets/scss/5-elements/buttons",
+                "assets/scss/6-skeleton/layouts",
+                "assets/scss/7-components/forms",
+                "assets/scss/8-utilities/modifiers",
+                "assets/scss/material-overrides",
+                "assets/scss/custom-material-theme.scss"
+              ]
+            }
           },
           "configurations": {
             "production": {

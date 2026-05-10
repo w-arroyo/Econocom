@@ -1,38 +1,93 @@
-<!-- src/app/components/login/login.component.html -->
-<div class="login-wrapper">
-  <mat-card class="login-card">
-    <mat-card-content>
-      <h1 class="login-title">Sign in to your account</h1>
-      
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email address</mat-label>
-        <input matInput type="email" [(ngModel)]="email" />
-      </mat-form-field>
+<div class="login-page">
+  <div class="login-illustration">
+    <div class="illustration-content">
+      <img src="assets/images/login.svg" alt="Login Illustration" />
+    </div>
+  </div>
 
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [ngModel]="password" (ngModelChange)="password = $event" />
-      </mat-form-field>
+  <div class="login-panel">
+    <mat-card class="login-card">
+      <mat-card-content>
+        <div class="logo-wrapper">
+          <img src="assets/images/logos/Logo-RD.svg" alt="Logo" class="logo" />
+        </div>
 
-      <button mat-raised-button color="primary" class="full-width signin-btn" (click)="loginRequest()">
-        SIGN IN
-      </button>
+        <h1 class="login-title">Inicia sesión en tu cuenta</h1>
 
-      <div *ngIf="response" class="response-message">
-        {{ response }}
+        <mat-form-field appearance="outline" class="full-width custom-field">
+          <input
+            matInput
+            type="email"
+            placeholder="Correo electrónico"
+            [(ngModel)]="email"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width custom-field">
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            placeholder="Contraseña"
+            [ngModel]="password"
+            (ngModelChange)="password = $event"
+          />
+
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hidePassword = !hidePassword"
+          >
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="full-width signin-btn"
+          (click)="loginRequest()"
+        >
+          ENTRAR
+        </button>
+
+        <div *ngIf="response" class="response-message">
+          {{ response }}
+        </div>
+
+        <div class="separator">
+          <span>Otras formas de acceso:</span>
+        </div>
+
+        <button
+          mat-raised-button
+          class="full-width decathlon-btn"
+          (click)="loginWithDecathlon()"
+        >
+          ENTRAR CON DECATHLON
+        </button>
+
+        <div class="register-link">
+          ¿No tienes cuenta?
+          <a routerLink="/register">Regístrate</a>
+        </div>
+
+        <div class="footer">
+  <div class="language-selector">
+    <mat-icon>language</mat-icon>
+    <span>IDIOMA: ES</span>
+    <mat-icon class="arrow">expand_more</mat-icon>
+  </div>
+
+      <div class="footer-brand">
+        <img
+          src="assets/images/logos/Econocom.svg"
+          alt="Econocom"
+          class="econocom-logo"
+        />
       </div>
-
-      <div class="separator">
-        <span>Other access methods:</span>
       </div>
-
-      <button mat-stroked-button class="full-width decathlon-btn" (click)="loginWithDecathlon()">
-        SIGN IN WITH DECATHLON
-      </button>
-
-      <div class="register-link">
-        Don't have an account? <a routerLink="/register">Register</a>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
