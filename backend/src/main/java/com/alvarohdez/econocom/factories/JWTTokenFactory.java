@@ -12,9 +12,9 @@ public final class JWTTokenFactory {
     public String generateJwtToken(String userEmail){
         return Jwts.builder()
                 .signWith(AppConfig.getJwtTokenSigningKey())
-                .setExpiration(generateTokenExpirationDate())
-                .setIssuedAt(new Date())
-                .setSubject(userEmail)
+                .expiration(generateTokenExpirationDate())
+                .issuedAt(new Date())
+                .subject(userEmail)
                 .compact();
     }
 

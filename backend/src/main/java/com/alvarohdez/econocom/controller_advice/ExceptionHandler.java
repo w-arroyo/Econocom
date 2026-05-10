@@ -24,7 +24,7 @@ public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(EmptyFieldsException.class)
     public ResponseEntity<ExceptionResponse> emptyFieldsExceptionHandler(EmptyFieldsException exception, HttpServletRequest request){
-        log.error("Exception: ",exception);
+
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createEmptyFieldsResponse(request.getRequestURI())
         );
@@ -47,7 +47,7 @@ public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCredentials.class)
     public ResponseEntity<ExceptionResponse> invalidCredentialsExceptionHandler(InvalidCredentials exception, HttpServletRequest request){
-        log.error("Exception: ",exception);
+
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createInvalidCredentialsExceptionResponse(request.getRequestURI())
         );
@@ -62,14 +62,14 @@ public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(UnauthorizedRequestException.class)
     public ResponseEntity<ExceptionResponse> unauthorizedExceptionHandler(UnauthorizedRequestException exception, HttpServletRequest request){
-        log.error("Exception: ",exception);
+
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createUnauthorizedResponse(request.getRequestURI()));
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(UserDoesNotExistException.class)
     public ResponseEntity<ExceptionResponse> userDoesNotExistExceptionHandler(UserDoesNotExistException exception, HttpServletRequest request){
-        log.error("Exception: ",exception);
+
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createUserDoesNotExistExceptionResponse(request.getRequestURI())
         );
@@ -77,7 +77,7 @@ public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(FraudulentRequestException.class)
     public ResponseEntity<ExceptionResponse> fraudulentExceptionHandler(FraudulentRequestException exception, HttpServletRequest request){
-        log.error("Exception: ",exception);
+
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createForbiddenResponse(request.getRequestURI())
         );
