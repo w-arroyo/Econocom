@@ -26,6 +26,9 @@ public class LoginController {
     public ResponseEntity<SuccessfulAuthenticationResponse> login(@RequestBody LoginRequestDTO loginRequestDTO){
         UserValidator.checkForEmptyFields(loginRequestDTO);
         // later for registration i should validate the email
+
+        // FIX DATA ACCESS
+
         String generatedJwtToken= userAuthenticationService.login(loginRequestDTO);
         return RequestResponseGenerator.generateSuccessfulRequestResponse(
                 new SuccessfulAuthenticationResponse(generatedJwtToken));
