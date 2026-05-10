@@ -1,0 +1,103 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  background-color: #f5f5f5;
+  padding: 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 24px 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.signin-btn {
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.response-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 1px solid #ef9a9a;
+}
+
+.separator {
+  text-align: center;
+  margin: 24px 0 16px;
+  color: #666;
+  font-size: 0.9rem;
+  position: relative;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: #ddd;
+  }
+  
+  &::before {
+    left: 0;
+  }
+  
+  &::after {
+    right: 0;
+  }
+  
+  span {
+    background: white;
+    padding: 0 12px;
+  }
+}
+
+.decathlon-btn {
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  border-color: #0071c5;
+  color: #0071c5;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  
+  a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
