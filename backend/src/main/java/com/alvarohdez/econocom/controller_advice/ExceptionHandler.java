@@ -45,13 +45,13 @@ public class ExceptionHandler {
                 exceptionResponseFactory.createUnauthorizedResponse(request.getRequestURI()));
     }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCredentials.class)
-    public ResponseEntity<ExceptionResponse> invalidCredentialsExceptionHandler(InvalidCredentials exception, HttpServletRequest request){
-
+    @org.springframework.web.bind.annotation.ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ExceptionResponse> invalidCredentialsExceptionHandler(InvalidCredentialsException exception, HttpServletRequest request){
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createInvalidCredentialsExceptionResponse(request.getRequestURI())
         );
     }
+
     @org.springframework.web.bind.annotation.ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<ExceptionResponse> authenticationExceptionHandler(AuthenticationException exception, HttpServletRequest request){
         log.error("Exception: ",exception);
@@ -101,6 +101,13 @@ public class ExceptionHandler {
     public ResponseEntity<ExceptionResponse> emailAlreadyInUseExceptionHandler(EmailAlreadyInUseException exception, HttpServletRequest request){
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createEmailAlreadyInUseExceptionResponse(request.getRequestURI()));
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(InvalidSsoLoginCodeException.class)
+    public ResponseEntity<ExceptionResponse> invalidSsoLoginCodeExceptionHandler(InvalidSsoLoginCodeException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createInvalidSsoLoginCodeExceptionResponse(request.getRequestURI())
+        );
     }
 
 }

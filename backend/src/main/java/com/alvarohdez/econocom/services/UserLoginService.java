@@ -12,12 +12,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserAuthenticationService {
+public class UserLoginService {
 
     private final JwtTokenHandler jwtTokenHandler;
     private final AuthenticationManager authenticationManager;
 
-    public UserAuthenticationService(JwtTokenHandler jwtTokenHandler, @Lazy AuthenticationManager authenticationManager) {
+    public UserLoginService(JwtTokenHandler jwtTokenHandler, @Lazy AuthenticationManager authenticationManager) {
         this.jwtTokenHandler = jwtTokenHandler;
         this.authenticationManager = authenticationManager;
     }

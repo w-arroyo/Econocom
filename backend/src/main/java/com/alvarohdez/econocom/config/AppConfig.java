@@ -1,4 +1,4 @@
-package com.alvarohdez.econocom.app_config;
+package com.alvarohdez.econocom.config;
 
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +16,7 @@ public class AppConfig {
     private static String fillerUserPassword;
     private static int jwtTokenLength;
     private static String jwtTokenSigningKey;
+    private static int jwtTokenBearerPrefixLength;
 
     @Value("${app.filler_user_email}")
     private void setFillerUsername(String value){
@@ -37,6 +38,11 @@ public class AppConfig {
         jwtTokenLength=Integer.parseInt(value);
     }
 
+    @Value("${app.jwt_token_bearer_prefix_length}")
+    public void setJwtTokenBearerPrefixLength(String value){
+        jwtTokenBearerPrefixLength=Integer.parseInt(value);
+    }
+
     public static String getFillerUserEmail(){
         return fillerUserEmail;
     }
@@ -51,6 +57,10 @@ public class AppConfig {
 
     public static int getJwtTokenLength(){
         return jwtTokenLength;
+    }
+
+    public static int getJwtTokenBearerPrefixLength(){
+        return jwtTokenBearerPrefixLength;
     }
 
 }
