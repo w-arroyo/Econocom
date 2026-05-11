@@ -105,6 +105,7 @@ public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(InvalidSsoLoginCodeException.class)
     public ResponseEntity<ExceptionResponse> invalidSsoLoginCodeExceptionHandler(InvalidSsoLoginCodeException exception, HttpServletRequest request){
+        log.error("Exception: ",exception);
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createInvalidSsoLoginCodeExceptionResponse(request.getRequestURI())
         );

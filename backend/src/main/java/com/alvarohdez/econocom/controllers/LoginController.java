@@ -36,16 +36,16 @@ public class LoginController {
     }
 
     @GetMapping("sso")
-    public ResponseEntity<Void> starSsoLogin(){
-        String redirectUrl= userSsoLoginService.generateUrl();
+    public ResponseEntity<Void> starSsoLogin(@RequestParam("email") String email){
+        GlobalValidator.isNullOrEmpty(email);
+        String redirectUrl= userSsoLoginService.startSsoLogin(email);
         return RequestResponseGenerator.generateSsoLoginRequestResponse(redirectUrl);
     }
 
     @GetMapping("sso/callback")
-    public ResponseEntity<SuccessfulAuthenticationResponse> processSsoCallback(@RequestParam String ssoCode){
+    public ResponseEntity<SuccessfulAuthenticationResponse> processSsoCallback(@RequestParam("code") String ssoCode){
         GlobalValidator.isNullOrEmpty(ssoCode);
-        String token= userSsoLoginService.processCallbackRequest(ssoCode);
-        // authenticate
+        String token= userSsoLoginService.completeSsoLogin(ssoCode);
         return generateSuccessfulLoginResponseEntity(token);
     }
 

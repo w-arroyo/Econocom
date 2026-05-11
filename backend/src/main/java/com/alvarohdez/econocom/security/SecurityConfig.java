@@ -37,6 +37,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.antMatchers("/api/users/register").permitAll(); // allows access without authentication
                     auth.antMatchers("/api/users/login").permitAll();
+                    auth.antMatchers("/api/users/sso").permitAll();
+                    auth.antMatchers("/api/users/sso/callback").permitAll();
                     //auth.antMatchers().permitAll(); this would allow any request without being authenticated
                     auth.anyRequest().authenticated(); // requires being logged in to access any request
                 })

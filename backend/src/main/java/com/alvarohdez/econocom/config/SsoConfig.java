@@ -14,7 +14,7 @@ public class SsoConfig {
     private static String ssoClientIdParam;
     private static String ssoRedirectUriParam;
     private static String ssoResponseTypeParam;
-    private static String ssoCodePrefix;
+    private static String ssoCodeParam;
 
     @Value("${sso.client_id}")
     private void setClientId(String value){
@@ -46,9 +46,9 @@ public class SsoConfig {
         ssoResponseTypeParam=value;
     }
 
-    @Value("${sso.code_prefix}")
-    private void setSsoCodePrefix(String value){
-        ssoCodePrefix=value;
+    @Value("${sso.code_param}")
+    private void setSsoCodeParam(String value){
+        ssoCodeParam =value;
     }
 
     public static String getSsoClientId(){
@@ -75,8 +75,8 @@ public class SsoConfig {
         return ssoResponseTypeParam;
     }
 
-    public static String getSsoCodePrefix() {
-        return ssoCodePrefix;
+    public static String getSsoCodeParam() {
+        return ssoCodeParam;
     }
 
 }
