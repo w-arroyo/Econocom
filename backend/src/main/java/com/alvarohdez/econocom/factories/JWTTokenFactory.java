@@ -1,6 +1,6 @@
 package com.alvarohdez.econocom.factories;
 
-import com.alvarohdez.econocom.app_config.AppConfig;
+import com.alvarohdez.econocom.config.AppConfig;
 import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;
 

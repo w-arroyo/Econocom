@@ -1,6 +1,6 @@
 package com.alvarohdez.econocom.initializer;
 
-import com.alvarohdez.econocom.app_config.AppConfig;
+import com.alvarohdez.econocom.config.AppConfig;
 import com.alvarohdez.econocom.factories.UserFactory;
 import com.alvarohdez.econocom.repositories.FillerUserRepository;
 import org.springframework.stereotype.Component;

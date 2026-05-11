@@ -71,4 +71,12 @@ public final class ExceptionResponseFactory {
         );
     }
 
+    public ExceptionResponse createInvalidSsoLoginCodeExceptionResponse(String path){
+        return generateExceptionResponse(
+                "Invalid SSO login code.",
+                HttpStatus.BAD_REQUEST.value(),
+                path
+        );
+    }
+
 }

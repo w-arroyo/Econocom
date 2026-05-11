@@ -1,6 +1,6 @@
 package com.alvarohdez.econocom.handlers;
 
-import com.alvarohdez.econocom.app_config.AppConfig;
+import com.alvarohdez.econocom.config.AppConfig;
 import com.alvarohdez.econocom.factories.JWTTokenFactory;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
@@ -49,7 +49,7 @@ public class JwtTokenHandler {
         if(header==null || header.trim().isEmpty() || !header.startsWith("Bearer ")){
             return null;
         }
-        return header.substring(7); // i only keep the token and remove the 'Bearer ' from the full header
+        return header.substring(AppConfig.getJwtTokenBearerPrefixLength()); // i only keep the token and remove the 'Bearer ' from the full header
     }
 
 }
