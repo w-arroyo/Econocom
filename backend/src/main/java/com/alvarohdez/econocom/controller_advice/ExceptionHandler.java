@@ -7,6 +7,7 @@ import com.alvarohdez.econocom.utils.generators.RequestResponseGenerator;
 import io.jsonwebtoken.JwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -108,6 +109,13 @@ public class ExceptionHandler {
         log.error("Exception: ",exception);
         return RequestResponseGenerator.generateExceptionResponse(
                 exceptionResponseFactory.createInvalidSsoLoginCodeExceptionResponse(request.getRequestURI())
+        );
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ExceptionResponse> badCredentialsExceptionHandler(BadCredentialsException exception, HttpServletRequest request){
+        return RequestResponseGenerator.generateExceptionResponse(
+                exceptionResponseFactory.createInvalidCredentialsExceptionResponse(request.getRequestURI())
         );
     }
 
