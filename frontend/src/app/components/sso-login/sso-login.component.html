@@ -1,1 +1,58 @@
-<p>sso-login works!</p>
+<div class="sso-login-page">
+  <div class="sso-illustration">
+    <div class="illustration-content">
+      <img src="assets/images/login.svg" alt="SSO Login Illustration" />
+    </div>
+  </div>
+
+  <div class="sso-panel">
+    <mat-card class="sso-card">
+      <mat-card-content>
+
+        <div class="logo-wrapper">
+          <img src="assets/images/logos/Logo-RD.svg" alt="Logo" class="logo" />
+        </div>
+
+        <h1 class="sso-title">Single Sign-On Access</h1>
+
+        <mat-form-field appearance="outline" class="full-width custom-field">
+          <input
+            matInput
+            type="email"
+            placeholder="Correo electrónico"
+            [(ngModel)]="email"
+          />
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          class="full-width sso-btn"
+          (click)="loginWithSSO()"
+        >
+          SSO LOGIN
+        </button>
+
+        <div class="response-message" *ngIf="response">
+          {{ response }}
+        </div>
+
+        <div class="footer">
+          <div class="language-selector">
+            <mat-icon>language</mat-icon>
+            <span>IDIOMA: ES</span>
+            <mat-icon class="arrow">expand_more</mat-icon>
+          </div>
+
+          <div class="footer-brand">
+            <img
+              src="assets/images/logos/Econocom.svg"
+              alt="Econocom"
+              class="econocom-logo"
+            />
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

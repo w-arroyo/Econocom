@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   private httpClient: HttpClient;
-  private URL: string= '/api/users';
+  private URL: string= 'http://localhost:8080/api/users';
 
   constructor(httpClient: HttpClient){
     this.httpClient=httpClient;
@@ -18,6 +18,10 @@ export class LoginService {
 
   login(loginRequest:LoginRequest): Observable<SuccessfulLoginRequest>{
     return this.httpClient.post<SuccessfulLoginRequest>(`${this.URL}/login`,loginRequest);
+  }
+
+  loginWithSso(email:string): Observable<SuccessfulLoginRequest>{
+    return this.httpClient.get<SuccessfulLoginRequest>(`${this.URL}/sso?email=${email}`);
   }
 
 }

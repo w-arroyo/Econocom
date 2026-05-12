@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { LoginRequest } from '../../models/login_request.model';
+import { EmailFormatValidator } from 'src/app/utils/validators/email.validator';
 
 @Component({
   selector: 'app-login',
@@ -52,7 +53,7 @@ export class LoginComponent {
   }
 
   loginWithDecathlon(){
-
+    this.router.navigate(['/sso']);
   }
 
   changePasswordVisibilty(): void{
@@ -64,7 +65,7 @@ export class LoginComponent {
       this.response='Los campos son obligatorios.'
       return false;
     }
-    if(!this.isEmailValid()){
+    if(!EmailFormatValidator.checkEmailFormat(this.email)){
       this.response='Introduzca un formato de email correcto.';
       return false;
     }
@@ -73,11 +74,6 @@ export class LoginComponent {
       return false;
     }
     return true;
-  }
-
-  private isEmailValid(): boolean{
-    const emailRegex= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(this.email);
   }
 
   private isPasswordValid(): boolean{
