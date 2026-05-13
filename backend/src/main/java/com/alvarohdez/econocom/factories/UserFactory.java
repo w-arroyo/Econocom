@@ -10,11 +10,17 @@ import java.util.UUID;
 @Component
 public final class UserFactory {
 
+    private final PasswordEncoder passwordEncoder;
+
+    public UserFactory(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     private User generateUser(String username, String plainTextPassword, UserType userType){
         return new User(
                 UUID.randomUUID().toString(),
                 username,
-                PasswordEncoder.encodePassword(plainTextPassword),
+                passwordEncoder.encodePassword(plainTextPassword),
                 userType
         );
     }

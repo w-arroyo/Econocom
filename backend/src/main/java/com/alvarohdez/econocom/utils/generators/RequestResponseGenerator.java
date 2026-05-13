@@ -6,7 +6,11 @@ import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 
-public class RequestResponseGenerator {
+public final class RequestResponseGenerator {
+
+    private RequestResponseGenerator(){
+
+    }
 
     public static ResponseEntity<ExceptionResponse> generateExceptionResponse(ExceptionResponse exceptionResponse){
         return ResponseEntity.status(exceptionResponse.getCode()).body(exceptionResponse);

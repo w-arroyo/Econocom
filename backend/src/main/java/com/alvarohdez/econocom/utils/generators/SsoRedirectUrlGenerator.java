@@ -4,7 +4,7 @@ import com.alvarohdez.econocom.config.SsoConfig;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SsoRedirectUrlGenerator {
+public final class SsoRedirectUrlGenerator {
 
     public String generateSsoRedirectUrl(String code){
         StringBuilder stringBuilder=new StringBuilder();
