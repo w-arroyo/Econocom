@@ -15,6 +15,9 @@ public class JwtTokenHandler {
 
     private final JWTTokenFactory jwtTokenFactory;
 
+    private final String HEADER="Authorization";
+    private final String BEARER_PREFIX="Bearer ";
+
     public JwtTokenHandler(JWTTokenFactory jwtTokenFactory) {
         this.jwtTokenFactory = jwtTokenFactory;
     }
@@ -45,8 +48,8 @@ public class JwtTokenHandler {
     }
 
     public String getTokenFromRequest(HttpServletRequest httpServletRequest){
-        String header= httpServletRequest.getHeader("Authorization");
-        if(header==null || header.trim().isEmpty() || !header.startsWith("Bearer ")){
+        String header= httpServletRequest.getHeader(this.HEADER);
+        if(header==null || header.trim().isEmpty() || !header.startsWith(this.BEARER_PREFIX)){
             return null;
         }
         return header.substring(AppConfig.getJwtTokenBearerPrefixLength()); // i only keep the token and remove the 'Bearer ' from the full header

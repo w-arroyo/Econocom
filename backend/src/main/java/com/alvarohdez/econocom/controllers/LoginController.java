@@ -31,7 +31,7 @@ public class LoginController {
     @PostMapping("login")
     public ResponseEntity<SuccessfulAuthenticationResponse> login(@RequestBody LoginRequestDTO loginRequestDTO){
         UserValidator.checkLoginEmptyFields(loginRequestDTO);
-        String generatedJwtToken= authenticateUserAndGenerateJwtToken(loginRequestDTO.getEmail(),loginRequestDTO.getPassword());
+        String generatedJwtToken= userLoginService.login(loginRequestDTO.getEmail(),loginRequestDTO.getPassword());
         return generateSuccessfulLoginResponseEntity(generatedJwtToken);
     }
 
@@ -47,19 +47,6 @@ public class LoginController {
         GlobalValidator.isNullOrEmpty(ssoCode);
         String token= userSsoLoginService.completeSsoLogin(ssoCode);
         return generateSuccessfulLoginResponseEntity(token);
-    }
-
-    @PostMapping("register")
-    public ResponseEntity<SuccessfulAuthenticationResponse> register(@RequestBody RegistrationRequestDTO registrationRequestDTO){
-        UserValidator.checkRegistrationEmptyFields(registrationRequestDTO);
-        User savedUser= userService.saveClientUser(registrationRequestDTO);
-        String generatedJwtToken= authenticateUserAndGenerateJwtToken(registrationRequestDTO.getEmail(), registrationRequestDTO.getPassword());
-        // for future updates i would respond with a different object with some user details instead of just the jwt token
-        return generateSuccessfulLoginResponseEntity(generatedJwtToken);
-    }
-
-    private String authenticateUserAndGenerateJwtToken(String email, String password){
-        return userLoginService.login(email,password);
     }
 
     private ResponseEntity<SuccessfulAuthenticationResponse> generateSuccessfulLoginResponseEntity(String token){
