@@ -1,0 +1,67 @@
+REQUISITOS PREVIOS (SÓLO LA PRIMERA VEZ Y EN CASO DE NO TENER INSTALADAS DICHAS VERSIONES)
+-----------------------------------------
+
+1. Java JDK 8
+   Enlace: https://adoptium.net/download/
+
+2. Node.js 18 (versión LTS)
+   Enlace: https://nodejs.org/
+
+Puedes comprobar que todo está instalado, abre una terminal (CMD) y escribe:
+java -version
+node -v
+Si aparecen números de versión, está correcto.
+
+
+----------------------------------
+INSTRUCCIONES PARA EJECUTAR EL PROYECTO
+----------------------------------
+
+1. Descarga el proyecto desde este repositorio.
+   Pulsa en el botón verde "<> Code" y "Download ZIP".
+   Descomprime el archivo en una carpeta.
+
+2. Abre DOS terminales (CMD)
+   Para abrir una, pulsa la tecla Windows, escribe "cmd" y pulsa Enter.
+
+3. Terminal 1 - BACKEND
+   Escribe:
+   cd (con espacio al final)
+   Arrastra la carpeta "backend" del proyecto dentro de la terminal para no escribir la ruta. Pulsa Enter.
+   Escribe:
+   java -jar econocom-0.0.1-SNAPSHOT.jar
+   Pulsa Enter.
+   Cuando aparezca esta línea, el backend está listo:
+   "Started EconocomApplication in X seconds (JVM running for X)"
+
+4. Terminal 2 - FRONTEND
+   Escribe:
+   cd (con espacio al final)
+   Arrastra la carpeta frontend del proyecto dentro de la terminal para no escribir la ruta. Pulsa Enter.
+   Escribe:
+   npm install
+   Pulsa Enter y espera a que termine.
+   Escribe:
+   npx ng serve -o
+   Pulsa Enter.
+   Espera hasta que aparezca: "√ Compiled successfully."
+   El navegador se abrirá automáticamente.
+   Si no se abre, abre una pestaña en: http://localhost:4200
+
+
+--------------------
+CREDENCIALES DE PRUEBA
+--------------------
+
+   Email: laflame@rodeo.es
+   Contraseña: 2015
+
+
+--------------------
+NOTAS
+--------------------
+
+- Las DOS terminales deben permanecer abiertas mientras se usa la app.
+- Para detener el proyecto, pulsa Ctrl+C en cada terminal.
+- Si algún puerto está ocupado, cierra otras aplicaciones que puedan estar usándolo y reintenta.
+- Recomiendo abrir la consola del navegador porque anoté ahí algunas respuestas de la api.

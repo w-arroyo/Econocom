@@ -14,5 +14,7 @@ public final class UserTestConstants {
     public static final String FAKE_ENCODED_PASSWORD= "fake_encoded_password";
     public static final UserType FAKE_USER_TYPE= UserType.CLIENT;
     public static final String FAKE_JWT_TOKEN="fake_jwt_token";
+    public static final String FAKE_SSO_CODE= "fake_sso_code";
+    public static final String FAKE_REDIRECT_URL= "http://fake/fake";
 
 }
