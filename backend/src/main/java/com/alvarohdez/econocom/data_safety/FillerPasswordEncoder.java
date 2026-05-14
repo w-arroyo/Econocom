@@ -1,8 +1,10 @@
 package com.alvarohdez.econocom.data_safety;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
-public class PasswordEncoder {
+@Component
+public class FillerPasswordEncoder {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
 
